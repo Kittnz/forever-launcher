@@ -28,6 +28,11 @@ public static class App
 	public static void Main()
 	{
 		string[] commandLineArgs = Environment.GetCommandLineArgs();
+		if (Array.IndexOf(commandLineArgs, "--net-setup") > 0)
+		{
+			Environment.Exit(NetSetup.ElevatedMain(commandLineArgs));
+			return;
+		}
 		int num = Array.IndexOf(commandLineArgs, "--updated");
 		if (num > 0)
 		{

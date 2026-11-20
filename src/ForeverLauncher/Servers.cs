@@ -59,6 +59,9 @@ public static class Servers
 			serverEntry.StatusUrl = Str(dictionary2, "statusUrl") ?? "";
 			serverEntry.Website = Str(dictionary2, "website") ?? "";
 			serverEntry.SupportHost = (Str(dictionary2, "supportHost") ?? "").Trim();
+			serverEntry.Address = (Str(dictionary2, "address") ?? "").Trim();
+			serverEntry.CaFile = (Str(dictionary2, "caFile") ?? "").Trim();
+			serverEntry.BlockServices = !dictionary2.TryGetValue("blockServices", out var value3) || !(value3 is bool) || (bool)value3;
 			ServerEntry serverEntry2 = serverEntry;
 			if (dictionary2.TryGetValue("realms", out var value2) && value2 is IEnumerable && !(value2 is string))
 			{
@@ -103,7 +106,28 @@ public static class Servers
 		try
 		{
 			Directory.CreateDirectory(Path.GetDirectoryName(path));
-			File.WriteAllText(path, "{\r\n  \"servers\": [\r\n    {\r\n      \"name\": \"My TrinityCore server\",\r\n      \"portal\": \"logon.example.com\",\r\n      \"publicKey\": \"02596F0D0C061A8B30745988FD72C59E29EC367FB0F341F28E0F08D037BAFC69\",\r\n      \"regionGroup\": 8,\r\n      \"loginPort\": 1119,\r\n      \"worldPort\": 8085,\r\n      \"realms\": [\r\n        { \"name\": \"Normal\", \"port\": 8085, \"kind\": \"normal\" },\r\n        { \"name\": \"PvP\", \"port\": 8095, \"kind\": \"pvp\" },\r\n        { \"name\": \"RP\", \"port\": 8105, \"kind\": \"rp\" },\r\n        { \"name\": \"Hardcore\", \"port\": 8115, \"kind\": \"hardcore\" }\r\n      ],\r\n      \"statusUrl\": \"\",\r\n      \"website\": \"\"\r\n    }\r\n  ]\r\n}\r\n", new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+			string[] lines = new string[18]
+			{
+				"{",
+				"  \"servers\": [",
+				"    {",
+				"      \"name\": \"My server\",",
+				"      \"portal\": \"myserver.actual.battle.net:1119\",",
+				"      \"address\": \"203.0.113.10\",",
+				"      \"caFile\": \"myserver-ca.pem\",",
+				"      \"blockServices\": true,",
+				"      \"publicKey\": \"02596F0D0C061A8B30745988FD72C59E29EC367FB0F341F28E0F08D037BAFC69\",",
+				"      \"regionGroup\": 8,",
+				"      \"loginPort\": 1119,",
+				"      \"worldPort\": 8085,",
+				"      \"statusUrl\": \"\",",
+				"      \"website\": \"\"",
+				"    }",
+				"  ]",
+				"}",
+				""
+			};
+			File.WriteAllText(path, string.Join(Environment.NewLine, lines), new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
 		}
 		catch
 		{

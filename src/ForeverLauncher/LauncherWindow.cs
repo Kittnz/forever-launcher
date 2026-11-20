@@ -1224,6 +1224,12 @@ public sealed class LauncherWindow
 			Step(new Msg(MsgKind.Error, "srv.example", server.Name));
 			return;
 		}
+		string netProblem = NetSetup.Ensure(server, (string note) => Step(new Msg(MsgKind.Dim, "net.note", note)));
+		if (netProblem != null)
+		{
+			Step(new Msg(MsgKind.Error, "net.problem", netProblem));
+			return;
+		}
 		Patcher patcher = new Patcher(gameDir, server)
 		{
 			StartNew = gameRunning

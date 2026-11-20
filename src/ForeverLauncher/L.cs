@@ -194,6 +194,14 @@ public static class L
 			new string[3] { "Website", "Web", "Сайт" }
 		},
 		{
+			"net.note",
+			new string[3] { "{0}", "{0}", "{0}" }
+		},
+		{
+			"net.problem",
+			new string[3] { "Network setup: {0}", "Configuración de red: {0}", "Настройка сети: {0}" }
+		},
+		{
 			"srv.none",
 			new string[3] { "No server configured: click \"Edit servers\" and add yours to servers.json.", "No hay servidores: pulsa \"Editar servidores\" y añade el tuyo en servers.json.", "Серверов нет: нажмите \"Править серверы\" и добавьте свой в servers.json." }
 		},
