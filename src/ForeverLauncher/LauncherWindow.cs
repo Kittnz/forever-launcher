@@ -257,7 +257,7 @@ public sealed class LauncherWindow
 		{
 			SetLanguage("ru");
 		};
-		versionText.Text = "v2.4.2";
+		versionText.Text = "v2.6.0";
 		Find<Grid>("TitleBar").MouseLeftButtonDown += (object s, MouseButtonEventArgs e) =>
 		{
 			if (e.ButtonState == MouseButtonState.Pressed)
@@ -644,7 +644,7 @@ public sealed class LauncherWindow
 			ShowNewsText(L.Get("ui.newsfail"));
 		}
 		ShowCommits();
-		if (updateState == UpdateState.None && StatusClient.IsNewer(s.LatestLauncher, "2.4.2"))
+		if (updateState == UpdateState.None && StatusClient.IsNewer(s.LatestLauncher, "2.6.0"))
 		{
 			updateText.Text = L.Get("ui.update", s.LatestLauncher);
 			if (!string.IsNullOrEmpty(s.LauncherUrl))
@@ -1172,13 +1172,8 @@ public sealed class LauncherWindow
 		}
 		if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
 		{
-			string text = folderBrowserDialog.SelectedPath;
-			string text2 = System.IO.Path.Combine(text, "_classic_beta_");
-			if (!File.Exists(System.IO.Path.Combine(text, "WowB.exe")) && File.Exists(System.IO.Path.Combine(text2, "WowB.exe")))
-			{
-				text = text2;
-			}
-			SetGameDir(text, save: true);
+			string selectedPath = folderBrowserDialog.SelectedPath;
+			SetGameDir(Patcher.GameDirIn(selectedPath), save: true);
 		}
 	}
 
@@ -1212,7 +1207,7 @@ public sealed class LauncherWindow
 		if (msg != null)
 		{
 			Step(new Msg(MsgKind.Error, msg.Key, msg.Args));
-			if (!File.Exists(System.IO.Path.Combine(gameDir ?? "", "WowB.exe")))
+			if (Patcher.FindExe(gameDir) == null)
 			{
 				PickFolder();
 			}

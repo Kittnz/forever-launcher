@@ -46,7 +46,13 @@ internal static class Settings
 		try
 		{
 			string text = File.ReadAllText(FilePath).Trim();
-			return File.Exists(Path.Combine(text, "WowB.exe")) ? text : null;
+			if (Patcher.FindExe(text) != null)
+			{
+				return text;
+			}
+			string directoryName = Path.GetDirectoryName(text.TrimEnd('\\'));
+			string text2 = ((directoryName == null) ? null : Patcher.GameDirIn(directoryName));
+			return (text2 != null && Patcher.FindExe(text2) != null) ? text2 : null;
 		}
 		catch
 		{

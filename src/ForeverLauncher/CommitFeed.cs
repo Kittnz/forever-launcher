@@ -10,7 +10,7 @@ namespace ForeverLauncher;
 
 public static class CommitFeed
 {
-	public const string Repo = "advocaite/TrinityCore";
+	public const string Repo = "Karrz1/TrinityCore";
 
 	public const string Branch = "forever";
 
@@ -24,7 +24,7 @@ public static class CommitFeed
 
 	private static Task<List<CommitInfo>> pending;
 
-	public static string BranchUrl => "https://github.com/advocaite/TrinityCore/commits/forever";
+	public static string BranchUrl => "https://github.com/Karrz1/TrinityCore/commits/forever";
 
 	public static Task<List<CommitInfo>> GetAsync()
 	{
@@ -54,9 +54,9 @@ public static class CommitFeed
 				using (WebClient wc = new WebClient())
 				{
 					wc.Encoding = Encoding.UTF8;
-					wc.Headers[HttpRequestHeader.UserAgent] = "ForeverLauncher/2.4.2";
+					wc.Headers[HttpRequestHeader.UserAgent] = "ForeverLauncher/2.6.0";
 					wc.Headers[HttpRequestHeader.Accept] = "application/vnd.github+json";
-					json = await wc.DownloadStringTaskAsync("https://api.github.com/repos/advocaite/TrinityCore/commits?sha=forever&per_page=" + 10);
+					json = await wc.DownloadStringTaskAsync("https://api.github.com/repos/Karrz1/TrinityCore/commits?sha=forever&per_page=" + 10);
 				}
 				List<CommitInfo> list = new List<CommitInfo>();
 				if (new JavaScriptSerializer

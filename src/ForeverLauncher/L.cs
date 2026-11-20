@@ -175,7 +175,7 @@ public static class L
 		},
 		{
 			"ui.folderdlg",
-			new string[3] { "Choose the _classic_beta_ folder (the one with WowB.exe)", "Elige la carpeta _classic_beta_ (la que tiene WowB.exe)", "Выберите папку _classic_beta_ (в которой лежит WowB.exe)" }
+			new string[3] { "Choose the game's _forever_ folder (the one with Wow.exe)", "Elige la carpeta _forever_ del juego (la que tiene Wow.exe)", "Выберите папку _forever_ игры (в которой лежит Wow.exe)" }
 		},
 		{
 			"ui.server",
@@ -403,11 +403,11 @@ public static class L
 		},
 		{
 			"dir.choose",
-			new string[3] { "Choose the game's _classic_beta_ folder.", "Elige la carpeta _classic_beta_ del juego.", "Выберите папку _classic_beta_ игры." }
+			new string[3] { "Choose the game's _forever_ folder.", "Elige la carpeta _forever_ del juego.", "Выберите папку _forever_ игры." }
 		},
 		{
 			"dir.noexe",
-			new string[3] { "WowB.exe is not in that folder (it must be _classic_beta_).", "No encuentro WowB.exe en esa carpeta (tiene que ser _classic_beta_).", "В этой папке нет WowB.exe (нужна папка _classic_beta_)." }
+			new string[3] { "The game is not in that folder (it must be _forever_, with Wow.exe).", "No encuentro el juego en esa carpeta (tiene que ser _forever_, con Wow.exe).", "В этой папке нет игры (нужна папка _forever_ с Wow.exe)." }
 		},
 		{
 			"dir.untested",
@@ -439,7 +439,7 @@ public static class L
 		},
 		{
 			"p.multi",
-			new string[3] { "Several WowB.exe are running from this folder: close them all and start again.", "Hay varios WowB.exe abiertos desde esta carpeta: ciérralos todos y vuelve a empezar.", "Из этой папки запущено несколько WowB.exe: закройте их все и начните заново." }
+			new string[3] { "Several game windows are running from this folder: close them all and start again.", "Hay varias ventanas del juego abiertas desde esta carpeta: ciérralas todas y vuelve a empezar.", "Из этой папки запущено несколько окон игры: закройте их все и начните заново." }
 		},
 		{
 			"p.attached",
